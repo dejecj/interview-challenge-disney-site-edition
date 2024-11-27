@@ -9,5 +9,5 @@ export type Pagination = {
 
 export interface ApiResponse {
     info: Pagination;
-    data: Character[];
+    data: Character[] | Character;
   };

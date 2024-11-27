@@ -1,11 +1,12 @@
 import Image from "next/image"
+import DisneyLogo from '@/app/images/disney.svg'
 
 export function Footer() {
   return (
     <footer className="bg-white">
       <div className="container px-6 py-8">
         <Image
-          src="/placeholder.svg"
+          src={DisneyLogo}
           alt="Disney"
           width={100}
           height={40}

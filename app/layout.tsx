@@ -1,10 +1,14 @@
 import './globals.css'
 import { NavBar } from "@/components/nav-bar"
 import { Footer } from "@/components/footer"
+import { SearchProvider } from "@/contexts/search"
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Lato } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const lato = Lato({
+  weight: ['100','300','400','700','900'],
+  subsets: ['latin']
+})
 
 export const metadata: Metadata = {
   title: 'Disney Characters',
@@ -18,14 +22,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="min-h-screen bg-gray-50 flex flex-col">
-          <NavBar />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-        </div>
+      <body className={lato.className}>
+        <SearchProvider>
+          <div className="min-h-screen flex flex-col">
+            <NavBar />
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </SearchProvider>
       </body>
     </html>
   )

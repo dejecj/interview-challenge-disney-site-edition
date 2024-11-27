@@ -12,7 +12,7 @@ interface FeaturedCharactersProps {
 
 export function FeaturedCharacters({ characters }: FeaturedCharactersProps) {
   return (
-    <section className="bg-teal-900">
+    <section className="bg-disney-blue">
       <div className="container px-6 py-8">
         <h2 className="text-3xl font-bold text-center text-white mb-8">
           Featured Characters!

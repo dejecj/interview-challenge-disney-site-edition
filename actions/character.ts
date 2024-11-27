@@ -9,9 +9,12 @@ import { ApiResponse as DisneyApiResponse, Pagination as DisneyPagination } from
 export const list = async (params?:{name?:string, page?: string}) => {
     try {
         const options:{
+            pageSize: number,
             page?: string,
             name?:string
-        } = {};
+        } = {
+            pageSize: 8
+        };
 
         if(params?.page) {
             let searchParams = new URLSearchParams(new URL(params.page).search);
@@ -29,13 +32,18 @@ export const list = async (params?:{name?:string, page?: string}) => {
 
         console.log(new URLSearchParams(options));
 
+        console.log(`https://api.disneyapi.dev/character?${new URLSearchParams(options)}`);
         const response = await fetch(`https://api.disneyapi.dev/character?${new URLSearchParams(options)}`);
         if(!response.ok) {
             throw new Error(response.status.toString());
         }
 
         const payload = await response.json() as DisneyApiResponse;
-        return new Response<Character[], DisneyPagination, BaseError>("character", payload.data, payload.info).toJSON();
+        if (Array.isArray(payload.data)) {
+            return new Response<Character[], DisneyPagination, BaseError>("character", payload.data, payload.info).toJSON();
+        } else {
+            return new Response<Character[], DisneyPagination, BaseError>("character", [payload.data], payload.info).toJSON();
+        }
     } catch(e) {
         const error = new ApiError<BaseError>(e as Error).toJSON();
         return new Response<Character[], undefined, BaseError>("character", undefined, undefined, error).toJSON();
