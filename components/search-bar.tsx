@@ -13,7 +13,7 @@ export function SearchBar() {
   const debouncedSearch = useCallback(
     (value: string) => {
       const timer = setTimeout(() => {
-        if(path !== '/') router.push('/');
+        if(path !== '/' && value) router.push('/');
         setSearchTerm(value);
       }, 300);
 
