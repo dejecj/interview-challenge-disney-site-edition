@@ -7,29 +7,7 @@ import { useSearch } from "@/contexts/search";
 import { Character } from "@/types/characters";
 import { Pagination as DisneyPagination } from "@/types/disney-api";
 import { useEffect, useState } from "react";
-
-const featuredCharacters = [
-  {
-    name: "Belle",
-    imageUrl: "/placeholder.svg",
-    films: ["Beauty and the Beast", "Beauty and the Beast: The Enchanted Christmas"]
-  },
-  {
-    name: "The Beast",
-    imageUrl: "/placeholder.svg",
-    films: ["Beauty and the Beast", "Beauty and the Beast: The Enchanted Christmas"]
-  },
-  {
-    name: "Mickey Mouse",
-    imageUrl: "/placeholder.svg",
-    films: ["Hollywood Party", "Fantasia", "Fun and Fancy Free"]
-  },
-  {
-    name: "Donald Duck",
-    imageUrl: "/placeholder.svg",
-    films: ["The Reluctant Dragon", "Saludos Amigos", "The Three Caballeros"]
-  }
-]
+import featuredCharacters from '@/app/_static/featured-characters.json'
 
 interface FetchCharactersParams {
   page?: string;
@@ -80,7 +58,7 @@ export default function Home() {
           {searchTerm && !isLoading ? <h3 className="font-lato text-center text-2xl pt-8">Search Results - {searchTerm}</h3> : null}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 px-6 py-8">
             {characters.map((character) => (
-              <CharacterCard key={character.name} {...character} />
+              <CharacterCard key={character._id} {...character}/>
             ))}
           </div>
           {pagination?.nextPage && (

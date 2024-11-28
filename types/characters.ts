@@ -15,6 +15,6 @@ interface BaseCaracter {
 export interface Character extends BaseCaracter {
     _id: number;
     __v: number;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 }

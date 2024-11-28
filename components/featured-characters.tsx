@@ -1,6 +1,7 @@
 import { CharacterCard } from "@/components/character-card"
 
 interface Character {
+  _id: number,
   name: string;
   imageUrl: string;
   films: string[];
