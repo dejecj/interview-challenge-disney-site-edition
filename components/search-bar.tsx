@@ -1,15 +1,19 @@
 "use client"
 import { Input } from "@/components/ui/input"
 import { useSearch } from "@/contexts/search"
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from 'react';
 
 export function SearchBar() {
   const { setSearchTerm } = useSearch();
   const [inputValue, setInputValue] = useState('');
+  const path = usePathname();
+  const router = useRouter();
 
   const debouncedSearch = useCallback(
     (value: string) => {
       const timer = setTimeout(() => {
+        if(path !== '/') router.push('/');
         setSearchTerm(value);
       }, 300);
 
