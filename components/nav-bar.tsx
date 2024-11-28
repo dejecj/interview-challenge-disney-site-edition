@@ -20,7 +20,7 @@ export function NavBar() {
         </Link>
         <SearchBar />
         <div className="w-10 h-10 rounded-full bg-disney-blue flex items-center justify-center flex-shrink-0">
-          <User className="text-white" size={20} />
+          <Link href="/profile"><User className="text-white" size={20} /></Link>
         </div>
       </div>
     </header>
