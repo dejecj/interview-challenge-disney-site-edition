@@ -9,10 +9,12 @@ import Link from "next/link"
 import { FeaturedCharacters } from "@/components/featured-characters"
 import featuredCharacters from '@/app/_static/featured-characters.json'
 import { useRouter } from "next/navigation"
+import { useToast } from "@/hooks/use-toast"
 
 export default function CharacterPage({ params }: { params: { id: string } }) {
   const [character, setCharacter] = useState<Character>()
   const [isLoading, setIsLoading] = useState(true)
+  const {toast} = useToast();
 
   const router = useRouter()
 
@@ -21,10 +23,14 @@ export default function CharacterPage({ params }: { params: { id: string } }) {
       setIsLoading(true)
       const _character = await get(params.id)
       
-      if (_character.success && _character.data){
-        console.log(_character);
+      if (_character.success){
         setCharacter(_character.data);
       } else {
+        toast({
+          title: "Error",
+          description: _character.error.message,
+          variant: "destructive"
+        })
         router.push('/');
       }
       setIsLoading(false);

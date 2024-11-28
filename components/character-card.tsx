@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui/card"
-import Image from "next/image"
 import Link from "next/link"
 import { ImageWithFallback } from "./image"
 
@@ -40,3 +39,18 @@ export function CharacterCard({ _id, name, imageUrl, films }: CharacterCardProps
   )
 }
 
+export function CharacterCardSkeleton() {
+  return (
+    <Card className="overflow-hidden rounded-none animate-pulse">
+      <div className="aspect-square w-full bg-gray-200" />
+      <CardContent className="p-4 pb-6 text-center">
+        <div className="h-6 w-3/4 mx-auto mb-2 bg-gray-200 rounded" />
+        <div className="mb-4">
+          <div className="h-4 w-1/2 mx-auto mb-2 bg-gray-200 rounded" />
+          <div className="h-3 w-5/6 mx-auto bg-gray-200 rounded" />
+        </div>
+        <div className="h-4 w-1/3 mx-auto bg-gray-200 rounded" />
+      </CardContent>
+    </Card>
+  )
+}

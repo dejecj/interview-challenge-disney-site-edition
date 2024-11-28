@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer"
 import { SearchProvider } from "@/contexts/search"
 import type { Metadata } from 'next'
 import { Lato } from 'next/font/google'
+import { Toaster } from "@/components/ui/toaster"
 
 const lato = Lato({
   weight: ['100','300','400','700','900'],
@@ -32,6 +33,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </SearchProvider>
+        <Toaster />
       </body>
     </html>
   )
