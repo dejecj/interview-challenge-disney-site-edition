@@ -86,7 +86,7 @@ export default function Home() {
           </div>
           {pagination?.nextPage && (
             <div className="mt-8 mb-8 flex justify-center">
-              <Button onClick={handleLoadMore} disabled={isLoading} className="bg-disney-blue">
+              <Button onClick={handleLoadMore} disabled={isLoading} className="">
                 {isLoading ? "Loading..." : "Load More"}
               </Button>
             </div>

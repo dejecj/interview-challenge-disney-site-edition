@@ -92,7 +92,7 @@ export default function CharacterPage({ params }: { params: { id: string } }) {
                   </div>
 
                   <Link href={character.sourceUrl}>
-                    <Button className="w-full bg-teal-900 hover:bg-teal-800 mt-8 w-fit ">
+                    <Button className="w-full mt-8 w-fit ">
                       Explore More Character Details
                     </Button>
                   </Link>
